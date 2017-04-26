@@ -59,13 +59,13 @@
             condicao = "Abaixo do peso";
             <div class="alert alert-warning" role="alert" style="margin-top:45px"><%=condicao%></div>  
         }  
-        else  if(imc >= 18.5 & imc < 25)  
+        else  if(imc >= 18.5 && imc < 25)  
             {  
                 condicao = "Peso normal"; 
                 <div class="alert alert-success" role="alert" style="margin-top:45px"><%=condicao%></div> 
             }  
             else  
-                if(imc >= 25 & imc < 30)  
+                if(imc >= 25 && imc < 30)  
                 {  
                     condicao = "Acima do peso";  
                     <div class="alert alert-warning" role="alert" style="margin-top:45px"><%=condicao%></div> 
