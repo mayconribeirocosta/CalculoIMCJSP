@@ -52,8 +52,9 @@
 
         imc = Float.parseFloat(peso) / (Float.parseFloat(altura) * Float.parseFloat(altura));  
 
-
-
+        condicao = condicao == null ? "0" : condicao;
+        altura = altura == null ? "0" : altura;
+        peso = peso == null ? "0" : peso;
         if(imc < 18.5)  
         {  
             condicao = "Abaixo do peso";
