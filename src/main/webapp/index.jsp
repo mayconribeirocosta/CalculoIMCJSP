@@ -63,13 +63,13 @@
 
 
 <%!boolean inicioPeso(float peso) {
-    return peso==0;
+    return peso<=0;
 }%>
 <%!boolean inicioAltura(float altura) {
-    return altura==0;
+    return altura<=0;
 }%>
 <%!boolean inicioImc(float imc) {
-    return imc==0;
+    return imc<=0;
 }%>
 
 <%        
@@ -87,15 +87,15 @@
         imcStr = imcStr == null ? "0" : imcStr;
         float imc = Float.parseFloat(imcStr);
         boolean inicioImc =inicioImc(imc);
-        
+
         imc = peso / (altura * altura);
         String condicao = "";     
         
 
-        if (inicioAltura && inicioPeso && inicioImc) {
-            condicao = "Nenhum IMC foi calculado ainda!";
+       if (inicioAltura || inicioPeso) {
+            
+            out.println("IMC invalido ou nenhum IMC foi calculado ainda");
        }
-
         else{ 
 
             if(imc < 18.5)  { 
@@ -114,14 +114,21 @@
                  else  if(imc >= 30)  {  
                         condicao = "Voce esta obeso";  
                         
-                    }       
+                    }
+                   
+             request.setAttribute("condicao", condicao);  
+                    condicao = (String) request.getAttribute("condicao");
+                    request.setAttribute("imc", imc);  
+                    imc = (Float) request.getAttribute("imc");       
+                    out.println(condicao +"<br/>"+"<br/>");
+                    out.println("O IMC eh : " + imc);    
+                   
         }
-        request.setAttribute("condicao", condicao);  
-        condicao = (String) request.getAttribute("condicao");
-        request.setAttribute("imc", imc);  
-        imc = (Float) request.getAttribute("imc");       
-        out.println(condicao +"<br/>"+"<br/>");
-        out.println("O IMC eh : " + imc +" ");
+         
+        
+       
+        
+        
         
 
       
